@@ -1,0 +1,32 @@
+.Main{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0)
+}
+.logo_img{
+    width: 12rem;
+    height: 5rem;
+}
+.buttons_div{
+    display: flex;
+    flex-direction: row;
+  align-items: center;
+  background-color: inherit;
+    justify-content: center;
+}
+button{
+    width: 8rem;
+    height: 3rem;
+    font-size: larger;
+    color: rgb(255, 255, 255);
+    font-style: block;
+    border-radius: 20%;
+    background-color: inherit;
+    border: transparent;
+    margin:0 1rem 0 1rem;
+}
+button:hover{
+    transition: .4s;
+    transform: scale(1.2);
+    border-bottom: 1px solid whitesmoke;
+}
