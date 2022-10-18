@@ -17,15 +17,15 @@ useEffect(()=>{
         {hours<=12?
         <div  className='timer'>
        <p className='hour'>{hours}:</p>
-       <p className='mins'>{date.getMinutes()}:</p>
-       <p className='secs'>{date.getSeconds()}:</p>
+       <p className='mins'>{date.getMinutes()} :</p>
+       <p className='secs'>{date.getSeconds()} :</p>
        <p className='pm'>AM</p>
        </div>
         :
         <div  className='timer'>
-        <p className='hour'>{hours-12}:</p>
-        <p className='mins'>{date.getMinutes()}:</p>
-        <p className='secs'>{date.getSeconds()}:</p>
+        <p className='hour'>{hours-12} :</p>
+        <p className='mins'>{date.getMinutes()} :</p>
+        <p className='secs'>{date.getSeconds()} :</p>
         <p className='pm'>PM</p>
     </div>
 }

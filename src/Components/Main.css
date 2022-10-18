@@ -1,46 +1,54 @@
-
 @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
   }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .main{
-    width: 40rem;
-    height: auto;
-    margin: auto;
-    overflow-x: hidden;
+  to {
+    transform: rotate(360deg);
   }
-  .image{
-    width: 20rem;
-    height: 20rem;
-  }
-  .wrapper{
-    display: flex; 
-   flex-direction: row; 
-  flex-wrap: wrap; 
-     gap: 2rem;
-  }
-  .like, .comment{
-    font-size: xx-large;
-    border: none;
-    background-color: inherit;
-  }
-  .like:hover{
-    cursor: pointer;
-  }
-  .buttons{
-    display: flex;
-    align-items: baseline;
-    gap: 2rem;
-    flex-direction: row;
-  }
+}
+.comment{
+  border: 1px solid black;
+  width: 15rem;
+  font-size: medium;
+  height: 2rem;
+  /* overflow: hidden; */
+}
+.main {
+  width: 40rem;
+  height: auto;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.image {
+  width: 20rem;
+  height: 20rem;
+}
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  overflow: hidden;
+}
+.like, .comment {
+  font-size: xx-large;
+  border: none;
+  color: black;
+  /* width: 4rem; */
+  width: auto;
+  background-color: inherit;
+}
+.like:hover {
+  cursor: pointer;
+}
+.buttons {
+  display: flex;
+align-items: flex-start;
+}
