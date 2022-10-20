@@ -12,17 +12,9 @@ export default function Header() {
           src="https://www.logo.wine/a/logo/BBC_News/BBC_News-Logo.wine.svg"
           alt=""
         />
+        <h1 className="Bright_heading">BBC News English</h1>
       </div>
-      <div className="search_div">
-        <input onChange={(e)=>{
-         setSearch(e.target.value)
-        }}
-          placeholder="Search for News"
-          className="input_search"
-          type="text"
-        />
-        <button className="search_btn">search</button>
-      </div>
+   
       <div className="buttons_div">
         <Link to="/headlines">
           {" "}

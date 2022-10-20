@@ -17,14 +17,14 @@
   width: 15rem;
   font-size: medium;
   height: 2rem;
-  /* overflow: hidden; */
 }
 .main {
   width: auto;
-  height: auto;
   margin: auto;
-  /* overflow-x: hidden; */
-  /* overflow-y: hidden; */
+  height: auto;
+  overflow-x: hidden; 
+  overflow-y: inherit;
+   background-color: rgb(203, 210, 255);
   border: 2px solid red;
   padding: 1rem;
   border-radius: 1rem;
@@ -35,11 +35,16 @@
 }
 .wrapper {
   display: flex;
+  height: auto;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
   overflow: hidden;
 }
+.main::-webkit-scrollbar{
+  display: none;
+}
+
 .wrapper_of_news{
   display: flex;
   flex-wrap: wrap;
@@ -66,5 +71,10 @@ align-items: flex-start;
 }
 .delete_btn{
   background-color: rgb(255, 21, 21);
-  border-radius: 1rem;
+  padding: 0.4rem;
+  border-radius: 0.51rem;
+  border: 1px solid blue;
+}
+.delete_btn{
+  cursor: pointer;
 }

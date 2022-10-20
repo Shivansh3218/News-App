@@ -29,11 +29,32 @@ function Main() {
     let newArr = filtered.filter((x)=> x.title!==title)
     setfilteredData(newArr)
   }
+  
+  useEffect(() => {
+    let searched = data.filter((item) => {
+      if (item.title) {
+        return item.title.includes(search);
+      }
+    });
+    setfilteredData(searched);
+  }, [search]);
+
   return (
     <div className="wrapper">
       <Header />
+    
       {loading?<img className="loader_img" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />:
       <div className="wrapper_of_news">
+          <div className="search_div">
+        <input onChange={(e)=>{
+         setSearch(e.target.value)
+        }}
+          placeholder="Search for News"
+          className="input_search"
+          type="text"
+        />
+        <button className="search_btn">search</button>
+      </div>
       {filtered.map((item) => {
         if(item.urlToImage){
         return (
@@ -43,18 +64,9 @@ function Main() {
             <img className="image" src={item.urlToImage} alt="Not found" />
             <p>{item.content} </p>
             <div className="buttons">
-              <button
-                onClick={(e) => {
-                  if (e.target.style.color !== "blue") {
-                    e.target.style.color = "blue";
-                  } else {
-                    e.target.style.color = "black";
-                  }
-                }}
-                className="like"
-              >
+           
                 <Like/>
-              </button>
+
               <button className="delete_btn" id={item.title} onClick={()=>{
                 handleDelete(item.title)
               }}>Delete</button>

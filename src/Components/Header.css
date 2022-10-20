@@ -8,6 +8,14 @@
     width: 12rem;
     height: 5rem;
 }
+.logo{
+    display: flex;
+    flex-direction: row;
+}
+.Bright_heading{
+    color: red;
+    font-family: "Trirong", serif;
+}
 .buttons_div{
     display: flex;
     flex-direction: row;
@@ -16,10 +24,10 @@
     justify-content: center;
 }
 .input_search{
-    width: 20rem;
+    width: 40rem;
     height: 2rem;
     font-size: 1.2rem;
-    border-top:none ;
+    /* border-top:none ; */
     padding: 0.5rem;
     border-radius: 10px;
 }
@@ -42,6 +50,27 @@
     border: transparent;
     margin:0 .125rem 0 .125rem;
 }
+.search_btn{
+    background-color: rgb(81, 135, 0);
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+.headline:hover{
+    cursor: pointer;
+}
+.home:hover{
+    cursor: pointer;
+}
+.buissness:hover{
+    cursor: pointer;
+}
+.about:hover{
+    cursor: pointer;
+}
+.themeChanger:hover{
+    cursor: pointer;
+}
+
 button:hover{
     transition: .4s;
     transform: scale(1.01);

@@ -13,12 +13,19 @@
       transform: rotate(360deg);
     }
   }
-  
+  .input_search{
+    width: 40rem;
+    margin:1rem 1rem  1rem 20vw;
+  }
   .main{
     width: 40rem;
     height: auto;
     margin: auto;
     overflow-x: hidden;
+  }
+  .loader_img_headlines{
+    margin: auto;
+    margin-top: 20vh;
   }
   .image{
     width: 20rem;
