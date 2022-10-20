@@ -1,7 +1,9 @@
 import React from "react";
 import "./Header.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 export default function Header() {
+  let [search,setSearch] = useState("")
   return (
     <div className="Main">
       <div className="logo">
@@ -12,7 +14,9 @@ export default function Header() {
         />
       </div>
       <div className="search_div">
-        <input
+        <input onChange={(e)=>{
+         setSearch(e.target.value)
+        }}
           placeholder="Search for News"
           className="input_search"
           type="text"
@@ -22,35 +26,29 @@ export default function Header() {
       <div className="buttons_div">
         <Link to="/headlines">
           {" "}
-          <button>Headlines</button>
+          <button className="headline">Headlines</button>
         </Link>
 
         <Link to="/">
           {" "}
-          <button>Home</button>
+          <button className="home">Home</button>
         </Link>
         <Link to="/buissness">
           {" "}
-          <button>Buisness</button>
+          <button className="buissness">Buisness</button>
         </Link>
         <Link to="/about">
           {" "}
-          <button>About</button>
+          <button className="about">About</button>
         </Link>
-        <button onClick={()=>{
+        <button className="themeChanger" onClick={()=>{
           if(document.querySelector("body").style.backgroundColor!=="black"){
             document.querySelector("body").style.backgroundColor="black"
-           let allClass= document.querySelectorAll(".wrapper")
-           allClass.forEach((i)=>{
-            i.style.color = "white"
-        })
           }
           else{
             document.querySelector("body").style.backgroundColor="white"
-            document.querySelector(".wrapper").style.color="black"
-            document.querySelector(".top_heading").classList.remove("active")
           }
-        }}>Change Theme</button>
+}}>Change Theme</button>
       </div>
     </div>
   );

@@ -20,11 +20,14 @@
   /* overflow: hidden; */
 }
 .main {
-  width: 40rem;
+  width: auto;
   height: auto;
   margin: auto;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-x: hidden; */
+  /* overflow-y: hidden; */
+  border: 2px solid red;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 .image {
   width: 20rem;
@@ -37,11 +40,20 @@
   gap: 2rem;
   overflow: hidden;
 }
+.wrapper_of_news{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: baseline;
+}
+.loader_img{
+  margin: auto;
+  margin-top: 20vh;
+}
 .like, .comment {
   font-size: xx-large;
   border: none;
   color: black;
-  /* width: 4rem; */
   width: auto;
   background-color: inherit;
 }
@@ -51,4 +63,8 @@
 .buttons {
   display: flex;
 align-items: flex-start;
+}
+.delete_btn{
+  background-color: rgb(255, 21, 21);
+  border-radius: 1rem;
 }

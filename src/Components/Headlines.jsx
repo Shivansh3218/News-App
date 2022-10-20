@@ -9,6 +9,7 @@ import Footer  from "./Footer";
 export default function Headlines() {
   const [data, setData] = useState([]);
   let[count,setcount]= useState(0)
+  let [filtered,setfilteredData]= useState([])
   useEffect(() => {
     async function getData() {
       const response = await axios.get(
@@ -16,6 +17,7 @@ export default function Headlines() {
       );
       setData(response.data.articles);
       console.log(response);
+      setfilteredData([data,...response.data.articles])
     }
     getData();
   }, []);
@@ -23,6 +25,10 @@ export default function Headlines() {
     localStorage.setItem("count", count);
   };
 
+  let handleDelete = (title)=>{
+    let newArr = filtered.filter((x)=> x.title!==title)
+    setfilteredData(newArr)
+  }
 
   
   return (
@@ -33,19 +39,22 @@ export default function Headlines() {
       </h1>
 
       <div className="wrapper">
-        {data.map((item) => {
+        {filtered.map((item) => {
+          if(item.urlToImage){
+
+          
           return (
             <div className="main">
               <h1 className="heading">{item.title}</h1>
               <p>{item.author}</p>
               <img className="image" src={item.urlToImage} alt="Not found" />
               <p>{item.content} </p>
-              <div className="buttons">
+                <div className="buttons">
               <button
                 onClick={(e) => {
+                  setcount(count++)
                   storingCount();
                   if (e.target.style.color !== "blue") {
-                    setcount(count+1)
                     e.target.style.color = "blue";
                   } else {
                     e.target.style.color = "black";
@@ -56,14 +65,17 @@ export default function Headlines() {
                 <AiOutlineLike />
                 &nbsp;{localStorage.getItem("count")}
               </button>
-              {/* <button className="comment">
+              <button className="comment">
                 <GoComment />
-              </button> */}
-               <input type="text" className="input_comment" placeholder="Add a comment" />
+              </button>
+              <button className="delete_btn" id={item.title} onClick={()=>{
+                handleDelete(item.title)
+              }}>Delete</button>
               </div>
             </div>
           );
-        })}
+        }
+      })}
         <Footer />
       </div>
     </div>

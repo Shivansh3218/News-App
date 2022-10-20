@@ -31,7 +31,7 @@
     border-radius: 10px;
     margin-left: 1rem;
 }
-button{
+.search_btn, .about,.buissness,.home ,.headline,.themeChanger{
     width: 8rem;
     height: 3rem;
     font-size: larger;
