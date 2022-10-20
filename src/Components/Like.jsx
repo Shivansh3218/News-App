@@ -31,7 +31,13 @@ let handleComment = ()=>{
           handleComment()
           document.querySelector(".input_comment").value=""
         }}>Comment</button>
-       <p>{comment}</p>
+      {
+       comment.map((cmt)=>{
+        return(
+          <p>{cmt}</p>
+        )
+       })
+       }
       </div>
     </div>
   );

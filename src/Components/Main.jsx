@@ -42,7 +42,6 @@ function Main() {
   return (
     <div className="wrapper">
       <Header />
-    
       {loading?<img className="loader_img" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />:
       <div className="wrapper_of_news">
           <div className="search_div">
