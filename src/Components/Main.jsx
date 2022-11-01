@@ -5,12 +5,14 @@ import axios from "axios";
 import Footer from "./Footer";
 import Header from "./Header";
 import Like from "./Like";
+import { useContext } from "react";
 // import { type } from "@testing-library/user-event/dist/type";
+import { SearchContext} from '../Context/SearchContext'
 
 function Main() {
+  let search =useContext(SearchContext)
   const [data, setData] = useState([]);
   let[loading,setLoading]= useState(false)
-  let [search, setSearch] = useState("");
   let [filtered, setfilteredData] = useState([]);
   useEffect(() => {
     async function getData() {
@@ -32,32 +34,24 @@ function Main() {
   
   useEffect(() => {
     let searched = data.filter((item) => {
+      console.log(search.search)
       if (item.title) {
-        return item.title.includes(search);
+        return item.title.includes(search.search);
       }
     });
     setfilteredData(searched);
-  }, [search]);
+  }, [search.search]);
 
   return (
     <div className="wrapper">
       <Header />
       {loading?<img className="loader_img" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />:
       <div className="wrapper_of_news">
-          <div className="search_div">
-        <input onChange={(e)=>{
-         setSearch(e.target.value)
-        }}
-          placeholder="Search for News"
-          className="input_search"
-          type="text"
-        />
-        <button className="search_btn">search</button>
-      </div>
+     
       {filtered.map((item) => {
         if(item.urlToImage){
         return (
-          <div id={item.title} className="main">
+          <div key={item.title} className="main">
             <h1 className="heading">{item.title}</h1>
             <p>{item.author}</p>
             <img className="image" src={item.urlToImage} alt="Not found" />

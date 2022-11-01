@@ -2,8 +2,12 @@ import React from "react";
 import "./Header.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { SearchContext } from "../Context/SearchContext";
+
 export default function Header() {
-  let [search,setSearch] = useState("")
+  const {search,handleSearch} = useContext(SearchContext)
+  
   return (
     <div className="Main">
       <div className="logo">
@@ -14,7 +18,16 @@ export default function Header() {
         />
         <h1 className="Bright_heading">BBC News English</h1>
       </div>
-   
+  
+      <div className="search_div">
+        <input onChange={handleSearch}
+        value={search}
+          placeholder="Search for News"
+          className="input_search"
+          type="text"
+        />
+        <button className="search_btn">search</button>
+      </div>
       <div className="buttons_div">
         <Link to="/headlines">
           {" "}

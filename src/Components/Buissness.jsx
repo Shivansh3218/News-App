@@ -6,10 +6,13 @@ import "./Main.css";
 import './Buissness.css'
 import Like from "./Like";
 import Footer from "./Footer";
+import { useContext } from "react";
+// import { type } from "@testing-library/user-event/dist/type";
+import { SearchContext} from '../Context/SearchContext'
 export default function Headlines() {
   const [data, setData] = useState([]);
   let [loading, setLoading] = useState(false);
-  let [search, setSearch] = useState("");
+  let search =useContext(SearchContext)
   let [filtered, setfilteredData] = useState([]);
   useEffect(() => {
     async function getData() {
@@ -28,15 +31,15 @@ export default function Headlines() {
     let newArr = filtered.filter((x) => x.title !== title);
     setfilteredData(newArr);
   };
-
   useEffect(() => {
     let searched = data.filter((item) => {
+      console.log(search.search)
       if (item.title) {
-        return item.title.includes(search);
+        return item.title.includes(search.search);
       }
     });
     setfilteredData(searched);
-  }, [search]);
+  }, [search.search]);
 
   return (
     <div className="mainwrapper">
@@ -53,17 +56,7 @@ export default function Headlines() {
         />
       ) : (
         <div className="wrapper_of_news">
-          <div className="search_div">
-            <input
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-              placeholder="Search for News"
-              className="input_search"
-              type="text"
-            />
-            <button className="search_btn">search</button>
-          </div>
+        
           {filtered.map((item) => {
             if (item.urlToImage) {
               return (
