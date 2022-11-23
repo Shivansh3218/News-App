@@ -64,7 +64,7 @@ export default function Headlines() {
             <p>{item.content} </p>
             <div className="buttons">
            
-                <Like/>
+                <Like value={item.title}/>
 
               <button className="delete_btn" id={item.title} onClick={()=>{
                 handleDelete(item.title)
