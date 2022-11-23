@@ -20,7 +20,7 @@ let handleComment = ()=>{
 }
   
   return (
-    <div className="likes_div" id= {props.value}> 
+    <div className="likes_div" key= {props.value}> 
       <h3 className="like_btn">
        <button className="like_button"><AiOutlineLike onClick={handleLike} /></button> 
         &nbsp;{like}
@@ -36,7 +36,7 @@ let handleComment = ()=>{
       {
        comment.map((cmt)=>{
         return(
-          <p>{cmt}</p>
+          <p key={props.value}>{cmt}</p>
         )
        })
        }

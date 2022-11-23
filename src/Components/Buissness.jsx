@@ -1,16 +1,15 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "./Header";
 import Like from "./Like";
 import Footer from "./Footer";
-import { useContext } from "react";
+
 import { SearchContext } from "../Context/SearchContext";
 
 import "./Main.css";
 import "./Buissness.css";
-
-export default function Headlines() {
+function Headlines() {
   const [data, setData] = useState([]);
   let [loading, setLoading] = useState(false);
   let search = useContext(SearchContext);
@@ -32,7 +31,7 @@ export default function Headlines() {
     let newArr = filtered.filter((x) => x.title !== title);
     setfilteredData(newArr);
   };
-  
+
   useEffect(() => {
     let searched = data.filter((item) => {
       if (item.title) {
@@ -60,7 +59,7 @@ export default function Headlines() {
           {filtered.map((item) => {
             if (item.urlToImage) {
               return (
-                <div id={item.title} className="main">
+                <div key={item.title} className="main">
                   <h1 className="heading">{item.title}</h1>
                   <p>{item.author}</p>
                   <img
@@ -92,3 +91,6 @@ export default function Headlines() {
     </div>
   );
 }
+
+
+export default Headlines
