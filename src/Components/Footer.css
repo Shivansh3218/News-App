@@ -3,7 +3,7 @@
     flex-direction: row;
     gap: 1rem;
     justify-content: center;
-    height: 5rem;
+    height: 3rem;
     width: 100vw;
     background-color:rgb(223 228 228);
     text-align: center;
@@ -14,7 +14,7 @@
     bottom: 0;
 }
 .hour,.mins,.secs,.pm{
-    font-size: xx-large;
+    font-size: large;
     color: maroon;
 }
 body{
