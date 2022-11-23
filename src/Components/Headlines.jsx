@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+
 import Header from "./Header";
-import "./Headline.css";
 import Like from "./Like";
 import Footer  from "./Footer";
-import { useContext } from "react";
-// import { type } from "@testing-library/user-event/dist/type";
 import { SearchContext} from '../Context/SearchContext'
+
+import "./Headline.css";
+
 export default function Headlines() {
   let search =useContext(SearchContext)
   const [data, setData] = useState([]);

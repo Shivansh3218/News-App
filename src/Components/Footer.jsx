@@ -1,6 +1,8 @@
 import React from 'react'
-import {useEffect,useState} from 'react'
+import {useState} from 'react'
+
 import './Footer.css'
+
 export default function Footer() {
     const [date, setDate] = useState(new Date());
     let hours = date.getHours()

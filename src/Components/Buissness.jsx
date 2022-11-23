@@ -2,18 +2,20 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import "./Main.css";
-import './Buissness.css'
 import Like from "./Like";
 import Footer from "./Footer";
 import { useContext } from "react";
-// import { type } from "@testing-library/user-event/dist/type";
-import { SearchContext} from '../Context/SearchContext'
+import { SearchContext } from "../Context/SearchContext";
+
+import "./Main.css";
+import "./Buissness.css";
+
 export default function Headlines() {
   const [data, setData] = useState([]);
   let [loading, setLoading] = useState(false);
-  let search =useContext(SearchContext)
+  let search = useContext(SearchContext);
   let [filtered, setfilteredData] = useState([]);
+
   useEffect(() => {
     async function getData() {
       setLoading(true);
@@ -21,7 +23,6 @@ export default function Headlines() {
         "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=ea14c121ce034b56b4ae40988411c39a"
       );
       setData(response.data.articles);
-      console.log(response);
       setLoading(false);
       setfilteredData([data, ...response.data.articles]);
     }
@@ -31,9 +32,9 @@ export default function Headlines() {
     let newArr = filtered.filter((x) => x.title !== title);
     setfilteredData(newArr);
   };
+  
   useEffect(() => {
     let searched = data.filter((item) => {
-      console.log(search.search)
       if (item.title) {
         return item.title.includes(search.search);
       }
@@ -56,7 +57,6 @@ export default function Headlines() {
         />
       ) : (
         <div className="wrapper_of_news">
-        
           {filtered.map((item) => {
             if (item.urlToImage) {
               return (
@@ -70,7 +70,7 @@ export default function Headlines() {
                   />
                   <p>{item.content} </p>
                   <div className="buttons">
-                    <Like />
+                    <Like value={item.title} />
 
                     <button
                       className="delete_btn"

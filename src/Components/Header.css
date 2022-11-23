@@ -1,11 +1,10 @@
 .Main{
     display: flex;
-    justify-content: space-between;
     width: 100%;
     background-color: rgb(0, 0, 0)
 }
 .logo_img{
-    width: 12rem;
+    width: 8rem;
     height: 5rem;
 }
 .logo{
@@ -14,6 +13,7 @@
 }
 .Bright_heading{
     color: red;
+    margin-bottom: -10px;
     font-family: "Trirong", serif;
 }
 .buttons_div{
@@ -25,7 +25,7 @@
 }
 .input_search{
     width: 20rem;
-    height: 2rem;
+    height: 1.2rem;
     font-size: 1.2rem;
     padding: 0.5rem;
     border-radius: 10px;
@@ -36,14 +36,18 @@
     align-items: baseline;
 }
 .search_btn{
-    border: 1px solid white;
-    border-radius: 10px;
-    margin-left: 1rem;
-}
-.search_btn, .about,.buissness,.home ,.headline,.themeChanger{
-    width: 6rem;
+    width: 4rem;
     height: 3rem;
-    font-size: larger;
+    border-radius: 0.3rem;
+    color: black;
+    background-color: chartreuse;
+    margin-left: 1rem;
+    height: 2rem;
+    padding: 0.5rem;
+}
+ .about,.buissness,.home ,.headline,.themeChanger{
+    width: 4rem;
+    height: 3rem;
     color: rgb(255, 255, 255);
     font-style: block;
     border-radius: 20%;
@@ -51,11 +55,7 @@
     border: transparent;
     margin:0 .125rem 0 .125rem;
 }
-.search_btn{
-    background-color: rgb(81, 135, 0);
-    border-radius: 1rem;
-    /* margin-left: 1rem; */
-}
+
 .headline:hover{
     cursor: pointer;
 }

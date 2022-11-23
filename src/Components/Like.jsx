@@ -1,16 +1,18 @@
-import { AiOutlineLike } from "react-icons/ai";
-import { GoComment } from "react-icons/go";
-import { useState } from "react";
 import React from "react";
+import { AiOutlineLike } from "react-icons/ai";
+import { useState } from "react";
+
 import './Like.css'
 
-export default function Like() {
+export default function Like(props) {
+
   let [like, setLike] = useState(0);
   let[comment,setComment]= useState([])
   let[newComment,setNewComment] =useState("")
   let handleLike = () => {
     setLike(like + 1);
   };
+  
 let handleComment = ()=>{
   setComment( [...comment,newComment])
   console.log(newComment)
@@ -18,7 +20,7 @@ let handleComment = ()=>{
 }
   
   return (
-    <div className="likes_div"> 
+    <div className="likes_div" id= {props.value}> 
       <h3 className="like_btn">
        <button className="like_button"><AiOutlineLike onClick={handleLike} /></button> 
         &nbsp;{like}

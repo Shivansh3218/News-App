@@ -1,13 +1,14 @@
 import React from "react";
-import "./Main.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "./Footer";
 import Header from "./Header";
 import Like from "./Like";
 import { useContext } from "react";
-// import { type } from "@testing-library/user-event/dist/type";
+
 import { SearchContext} from '../Context/SearchContext'
+
+import "./Main.css";
 
 function Main() {
   let search =useContext(SearchContext)
@@ -57,8 +58,7 @@ function Main() {
             <img className="image" src={item.urlToImage} alt="Not found" />
             <p>{item.content} </p>
             <div className="buttons">
-           
-                <Like/>
+                <Like value={item.title}/>
 
               <button className="delete_btn" id={item.title} onClick={()=>{
                 handleDelete(item.title)
