@@ -20,12 +20,13 @@ function Main() {
     async function getData() {
       setLoading(true);
       const response = await axios.get(
-        "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=ea14c121ce034b56b4ae40988411c39a"
+        "https://newsdata.io/api/1/news?apikey=pub_13820f4297ab264c30745a917e2298feeee80"
       );
-      setData(response.data.articles);
+      setData(response.data.results);
+      console.log(response.data.results)
       setLoading(false);
-      console.log(response.data.articles);
-      setfilteredData([data, ...response.data.articles]);
+      console.log(response.data.results[0].title);
+      setfilteredData([data, ...response.data.results]);
     }
     getData();
   }, []);
@@ -56,17 +57,17 @@ function Main() {
       ) : (
         <div className="wrapper_of_news">
           {filtered.map((item) => {
-            if (item.urlToImage) {
+            if (item.image_url) {
               return (
                 <div key={item.title} className="main">
                   <h1 className="heading">{item.title}</h1>
                   <p>{item.author}</p>
                   <img
                     className="image"
-                    src={item.urlToImage}
+                    src={item.image_url}
                     alt="Not found"
                   />
-                  <p>{item.content} </p>
+                  <p>{item.description} </p>
                   <div className="buttons">
                     <Like value={item.title} />
 

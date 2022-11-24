@@ -18,12 +18,13 @@ export default function Headlines() {
     async function getData() {
       setLoading(true);
       const response = await axios.get(
-        "https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=ea14c121ce034b56b4ae40988411c39a"
+        "https://newsdata.io/api/1/sources?apikey=pub_13820f4297ab264c30745a917e2298feeee80"
       );
-      setData(response.data.articles);
-      console.log(response);
+      setData(response.data.results);
+      console.log(response.data.results)
       setLoading(false);
-      setfilteredData([data, ...response.data.articles]);
+      console.log(response.data.results[0].title);
+      setfilteredData([data, ...response.data.results]);
     }
     getData();
   }, []);
@@ -50,6 +51,7 @@ export default function Headlines() {
 
       {loading ? (
         <img
+          style={{marginLeft:"43%"}}
           className="loader_img_headlines"
           src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
           alt=""
@@ -57,20 +59,19 @@ export default function Headlines() {
       ) : (
         <div className="wrapper_of_news">
           {filtered.map((item) => {
-            if (item.urlToImage) {
+            if (item.image_url) {
               return (
                 <div key={item.title} className="main">
                   <h1 className="heading">{item.title}</h1>
                   <p>{item.author}</p>
                   <img
                     className="image"
-                    src={item.urlToImage}
+                    src={item.image_url}
                     alt="Not found"
                   />
-                  <p>{item.content} </p>
+                  <p>{item.description} </p>
                   <div className="buttons">
                     <Like value={item.title} />
-
                     <button
                       className="delete_btn"
                       id={item.title}
