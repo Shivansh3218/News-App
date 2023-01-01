@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { SearchProvider } from './Context/SearchContext';
+import { ContextTheme } from './Context/ContextTheme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <SearchProvider>
-    <App />
-    </SearchProvider>
+    <ContextTheme>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </ContextTheme>
   </BrowserRouter>
 );
 

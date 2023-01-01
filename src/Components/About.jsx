@@ -1,5 +1,5 @@
 import React from 'react'
-import './About.css'
+import '../Components/css/About.css'
 import Header from './Header'
 export default function About() {
   return (
@@ -13,7 +13,7 @@ export default function About() {
 
     <div class="introduction_and_details">
         <div class="image">
-            <img class="image" src="https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/300709597_1257015031738935_7941720460539755241_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=e3f864&_nc_ohc=mqRHNpatoBcAX_jAWHn&_nc_ht=scontent-del1-2.xx&oh=00_AT_gRBuQLw6gCD5ULLnl2IZZRYcbqxYUC4aGzLF-NwiQSw&oe=6352E887" alt=""/>
+            <img class="image" src="https://media.licdn.com/dms/image/D4D03AQFhXXfToCt_XQ/profile-displayphoto-shrink_800_800/0/1670418374670?e=1678320000&v=beta&t=NwQsVRMD5bcI7nDyo4MxNuydqgDpt6AFLOznpUaEpWo" alt="Owneer Profile Pic"/>
         </div>
         <div class="details">
             <h2 className='h2'>Name : <span>Shivansh Rawat</span></h2>

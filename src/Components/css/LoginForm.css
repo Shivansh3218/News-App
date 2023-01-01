@@ -1,0 +1,44 @@
+#myVid{
+    position: fixed; 
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+    margin-top: -2rem;
+}
+.loginForm{
+    margin-top: 0;
+}
+#guestLogin{
+    padding: 0.6rem;
+    border-radius: 5px;
+    background-color: #18cc00;
+    color: white;
+    border: none;
+    margin: 1rem;
+    margin-left: 46%;
+    cursor: pointer;
+}
+.login-btn{
+    padding: 0.6rem;
+    border-radius: 5px;
+    width: 250px;
+    height: 40px;
+    background-color: #005d5e;
+    color: white;
+    border: none;
+    margin-left: 46%;
+    cursor: pointer;
+}
+.SignUp-btn{
+    padding: 0.6rem;
+    border-radius: 5px;
+    width: 250px;
+    height: 40px;
+    background-color: #005d5e;
+    color: white;
+    border: none;
+    margin-left: 46%;
+    cursor: pointer;
+}

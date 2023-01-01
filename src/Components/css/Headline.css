@@ -1,0 +1,58 @@
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .input_search{
+    margin:1rem 1rem  1rem 20vw;
+  }
+  .main{
+    width: 40rem;
+    height: auto;
+    margin: auto;
+    overflow-x: hidden;
+  }
+  .loader_img_headlines{
+    margin: auto;
+    margin-top: 20vh;
+  }
+  .image{
+    width: 20rem;
+    height: 20rem;
+  }
+  .wrapper{
+    display: flex; 
+   flex-direction: row; 
+  flex-wrap: wrap; 
+     gap: 2rem;
+  }
+  .like{
+    font-size: xx-large;
+    border: none;
+    background-color: inherit;
+  }
+  .like:hover{
+    cursor: pointer;
+  }
+  .buttons{
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    flex-direction: row;
+  }
+  .input_comment{
+    width: 20rem;
+    height: 2rem;
+    border-top: 0px;
+    border-right: 0px;
+  }

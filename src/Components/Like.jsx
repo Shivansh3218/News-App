@@ -2,7 +2,8 @@ import React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { useState } from "react";
 
-import './Like.css'
+
+import '../Components/css/Like.css'
 
 export default function Like(props) {
 
@@ -33,10 +34,13 @@ let handleComment = ()=>{
           handleComment()
           document.querySelector(".input_comment").value=""
         }}>Comment</button>
-      {
+        <h5 style={{marginTop:"-0.5rem", colour:"grey", cursor:"pointer"}}>Comments</h5>
+      {  
        comment.map((cmt)=>{
         return(
-          <p key={props.value}>{cmt}</p>
+          <>
+          <p style={{margin:"0"}} key={props.value}>{cmt}</p>
+          </>
         )
        })
        }

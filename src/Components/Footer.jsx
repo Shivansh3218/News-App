@@ -1,7 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
 
-import './Footer.css'
+
+import '../Components/css/Footer.css'
 
 export default function Footer() {
     const [date, setDate] = useState(new Date());

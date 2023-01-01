@@ -7,7 +7,8 @@ import Like from "./Like";
 import Footer from "./Footer";
 import { SearchContext } from "../Context/SearchContext";
 
-import "./Headline.css";
+
+import '../Components/css/Headline.css'
 
 export default function Headlines() {
   let search = useContext(SearchContext);
