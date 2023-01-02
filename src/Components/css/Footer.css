@@ -12,6 +12,9 @@
 .footer_div{
     position: fixed;
     bottom: 0;
+    border-radius: 10px;
+    padding-right: 1rem;
+    background-color: aliceblue;
 }
 .hour,.mins,.secs,.pm{
     font-size: large;
@@ -19,4 +22,11 @@
 }
 body{
     overflow-x: hidden;
+}
+.time_heading{
+    text-align: center;
+    font-size: x-large;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
 }

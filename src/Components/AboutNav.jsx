@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useContext } from "react";
 import { Switch, styled, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { SearchContext } from "../Context/SearchContext";
-
 import { Input } from "antd";
 import { Drawer } from "antd";
 
-import "../Components/css/Header.css";
+import { ThemeContext } from "../Context/ContextTheme";
+import { SearchContext } from "../Context/SearchContext";
 
-const { Search } = Input;
+import '../Components/css/Header.css'
+
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -59,7 +58,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const Navbar = ({ handleTheme, pageTheme }) => {
+const AboutNav = () => {
   const { search, handleSearch } = useContext(SearchContext);
   const [showMediaIcons, setShowMediaIcons] = useState(false);
 
@@ -76,24 +75,17 @@ const Navbar = ({ handleTheme, pageTheme }) => {
   };
 
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  
+  const userImg =   localStorage.getItem('img')
 
-  const userImg = localStorage.getItem("img");
-  const handleImg = (e) => {
-    const file = e.target.files[0];
-    getBase64(file).then((base64) => {
-      localStorage["img"] = base64;
-      console.log(base64, "image format changed ");
-    });
+  const handleTheme = () => {
+    count === 0 ? setCount(1) : setCount(0);
+    count === 0 ? setPageTheme(theme.dark) : setPageTheme(theme.light);
   };
-
-  const getBase64 = (file) => {
-    return new Promise((res, rej) => {
-      const reader = new FileReader();
-      reader.onload = () => res(reader.result);
-      reader.onabort = (err) => rej(err);
-      reader.readAsDataURL(file);
-    });
-  };
+  
+  const { theme, setTheme } = useContext(ThemeContext);
+  const [pageTheme, setPageTheme] = useState(theme.light);
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -106,33 +98,31 @@ const Navbar = ({ handleTheme, pageTheme }) => {
           />
 
           <Drawer
-            style={{ ...pageTheme, display: "flex", flexDirection: "column" }}
+            style={{ ...pageTheme,display:'flex', flexDirection:'column' }}
             placement="left"
+          
             onClose={onClose}
             open={open}
           >
-            {loggedInUser.Name === "Guest User" ? (
-              <img
-                id="userImg"
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                alt=""
-              />
-            ) : (
-              <img id="userImg" src={userImg} alt="" />
-            )}
-            <Typography variant="h4" sx={{ marginTop: "1rem" }}>
+            {
+              loggedInUser.Name==='Guest User'? 
+              
+            <img id="userImg" src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'  alt="" />
+              :
+            <img id="userImg" src={userImg}  alt="" />
+          }
+            <Typography variant="h4" sx={{marginTop:'1rem'}}>
               Welcome !! <span id="text-red">{loggedInUser.Name}</span>
             </Typography>
-
-            <div
-              className="logOut_btn"
-              style={{ position: "absolute", bottom: "5%", width: "80%" }}
-            >
+            
+        
               <a href="/">
-                <button className="logutButton">Logout</button>
+                <button style={{ position: "absolute", bottom: "5%", width: "80%" }} className="logutButton"  
+                >Logout</button>
               </a>
-            </div>
+          
           </Drawer>
+          
         </div>
 
         {/* 2nd menu part  */}
@@ -142,17 +132,9 @@ const Navbar = ({ handleTheme, pageTheme }) => {
           }
           style={{ ...pageTheme }}
         >
-          <Search
-            placeholder="input search text"
-            allowClear
-            value={search}
-            enterButton="Search"
-            size="large"
-            onChange={handleSearch}
-          />
           <ul>
             <li>
-              <a style={{ ...pageTheme }} href="/MainNews">
+            <a style={{ ...pageTheme }} href="/MainNews">
                 Home
               </a>
             </li>
@@ -171,11 +153,6 @@ const Navbar = ({ handleTheme, pageTheme }) => {
                 Politics
               </a>
             </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/headlines">
-                Headlines
-              </a>
-            </li>
           </ul>
         </div>
 
@@ -188,19 +165,19 @@ const Navbar = ({ handleTheme, pageTheme }) => {
                 marginLeft: "20%",
               },
             }}
-            onClick={() => {
+            onClick={()=>{
+              
               if (
-                document.querySelector("body").style.backgroundColor !== "black"
-              ) {
-                document.querySelector("body").style.backgroundColor = "black";
-              } else {
-                document.querySelector("body").style.backgroundColor = "white";
-              }
-              handleTheme();
-            }}
+                              document.querySelector("body").style.backgroundColor !== "black"
+                            ) {
+                              document.querySelector("body").style.backgroundColor = "black";
+                            } else {
+                              document.querySelector("body").style.backgroundColor = "white";
+                            }
+              handleTheme()}}
           />
-          
           {/* hamburget menu start  */}
+
           <div className="hamburger-menu">
             <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
               <GiHamburgerMenu />
@@ -212,4 +189,4 @@ const Navbar = ({ handleTheme, pageTheme }) => {
   );
 };
 
-export default Navbar;
+export default AboutNav;

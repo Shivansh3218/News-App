@@ -98,7 +98,8 @@ const LoginForm = () => {
             span: 16,
           }}
         >
-          <Button color="white" htmlType="submit">
+          <Button 
+          type="primary" htmlType="submit">
             Login
           </Button>
         </Form.Item>
@@ -109,7 +110,7 @@ const LoginForm = () => {
           }}
         >
           <Button
-            style={{ color: "white" }}
+          type="primary"
             onClick={() => navigate("/SignUp")}
             htmlType="submit"
           >

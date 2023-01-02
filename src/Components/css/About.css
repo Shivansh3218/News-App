@@ -23,14 +23,14 @@ h1{
     color: red;
 }
 
-span {
-    color: #01627c;
-}
 .blue{
     color: rgb(0 165 255);
 }
 .school {
     color: #2dd5ff;
+}
+#blue{
+    color: #01627c;
 }
 
 .introduction_and_details {

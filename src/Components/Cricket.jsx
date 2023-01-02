@@ -2,23 +2,21 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { Button, Paper } from "@mui/material";
-import { SearchContext } from "./Contexts/SearchProvider";
 import { Box } from "@mui/system";
 import { ColorRing } from "react-loader-spinner";
-
-import { ThemeContext } from "./Contexts/ContextTheme";
-import Cards from "./Cards";
 import logo from "../Assets/logo.png";
-import Navbar from "./Navbar";
 
-function Headlines() {
+import { ThemeContext } from "../Context/ContextTheme";
+import Cards from "./Cards";
+import AboutNav from "./AboutNav";
+
+function Cricket() {
   const { theme, setTheme } = useContext(ThemeContext);
   const [pageTheme, setPageTheme] = useState(theme.light);
   const [datas, setData] = useState([]);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
 
-  const { search, setSearch } = useContext(SearchContext);
 
   const handleTheme = () => {
     count === 0 ? setCount(1) : setCount(0);
@@ -26,16 +24,11 @@ function Headlines() {
   };
   useEffect(() => {
     axios
-      .get(`https://newsapi-z4r7.onrender.com/news?q=everything` )
+      .get(`https://newsapi-z4r7.onrender.com/news?q=cricket` )
       .then((response) => {
         setData([response.data.articles]);
       });
-  }, [search, page]);
-
-  let pageArr = [1, 2, 3, 4, 5];
-
-  const handleNext = () => setPage((x) => x + 1);
-  const handlePrev = () => setPage((x) => x - 1);
+  }, [ page]);
 
   return (
     <React.Fragment>
@@ -44,7 +37,7 @@ function Headlines() {
         src={logo}
         alt=""
       />
-      <Navbar handleTheme={handleTheme} pageTheme={pageTheme} />
+      <AboutNav handleTheme={handleTheme} pageTheme={pageTheme} />
       <Paper
         style={{
           ...pageTheme,
@@ -69,33 +62,8 @@ function Headlines() {
           />
         )}
       </Paper>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          margin: "1%",
-          paddingBottom: "2rem",
-          "@media(max-width:800px)": {
-            justifyContent: "center",
-          },
-        }}
-      >
-        <Button variant="contained" onClick={handlePrev}>
-          Prev
-        </Button>
-        {pageArr.map((pageNo) => {
-          return (
-            <Button onClick={() => setPage(pageNo)} style={{fontSize:'large'}} variant="text">
-              {pageNo}
-            </Button>
-          );
-        })}
-        <Button variant="contained" onClick={handleNext}>
-          Next
-        </Button>
-      </Box>
     </React.Fragment>
   );
 }
 
-export default Headlines;
+export default Cricket;

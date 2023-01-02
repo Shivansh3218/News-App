@@ -1,15 +1,9 @@
 import React from "react";
 import { Button, Form, Input, Select } from "antd";
 import Typography from "@mui/material/Typography";
-import {
-    Upload,
-  } from 'antd';
-
 import { useNavigate } from "react-router-dom";
-import { UploadOutlined } from "@mui/icons-material";
 
 import bgVid from '../Assets/loginVideo.mp4'
-import { render } from "@testing-library/react";
 
 const { Option } = Select;
 const formItemLayout = {

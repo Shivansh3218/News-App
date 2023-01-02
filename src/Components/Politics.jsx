@@ -2,23 +2,20 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { Button, Paper } from "@mui/material";
-import { SearchContext } from "./Contexts/SearchProvider";
 import { Box } from "@mui/system";
 import { ColorRing } from "react-loader-spinner";
 
-import { ThemeContext } from "./Contexts/ContextTheme";
-import Cards from "./Cards";
 import logo from "../Assets/logo.png";
-import Navbar from "./Navbar";
+import AboutNav from "./AboutNav";
+import { ThemeContext } from "../Context/ContextTheme";
+import Cards from "./Cards";
 
-function Headlines() {
+function Politics() {
   const { theme, setTheme } = useContext(ThemeContext);
   const [pageTheme, setPageTheme] = useState(theme.light);
   const [datas, setData] = useState([]);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
-
-  const { search, setSearch } = useContext(SearchContext);
 
   const handleTheme = () => {
     count === 0 ? setCount(1) : setCount(0);
@@ -26,11 +23,11 @@ function Headlines() {
   };
   useEffect(() => {
     axios
-      .get(`https://newsapi-z4r7.onrender.com/news?q=everything` )
+      .get(`https://newsapi-z4r7.onrender.com/news?q=politics`)
       .then((response) => {
         setData([response.data.articles]);
       });
-  }, [search, page]);
+  }, [page]);
 
   let pageArr = [1, 2, 3, 4, 5];
 
@@ -44,7 +41,7 @@ function Headlines() {
         src={logo}
         alt=""
       />
-      <Navbar handleTheme={handleTheme} pageTheme={pageTheme} />
+      <AboutNav handleTheme={handleTheme} pageTheme={pageTheme} />
       <Paper
         style={{
           ...pageTheme,
@@ -85,7 +82,11 @@ function Headlines() {
         </Button>
         {pageArr.map((pageNo) => {
           return (
-            <Button onClick={() => setPage(pageNo)} style={{fontSize:'large'}} variant="text">
+            <Button
+              onClick={() => setPage(pageNo)}
+              style={{ fontSize: "large" }}
+              variant="text"
+            >
               {pageNo}
             </Button>
           );
@@ -98,4 +99,4 @@ function Headlines() {
   );
 }
 
-export default Headlines;
+export default Politics;

@@ -35,6 +35,7 @@
 .wrapper_of_news {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   align-items: baseline;
 }
