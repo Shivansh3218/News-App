@@ -113,7 +113,7 @@ function Main() {
                   <CardMedia
                     component="img"
                     height="194"
-                    style={{ width: "300px" }}
+                    style={{ width: "100%" }}
                     image={item.image_url}
                     alt="News Image"
                   />
@@ -134,7 +134,8 @@ function Main() {
                         type="primary"
                         id={item.title}
                         danger
-                        style={{ color: "whitesmoke" }}
+                        style={{ color: "whitesmoke", width:'auto'
+                        }}
                         onClick={() => {
                           handleDelete(item.title);
                         }}
