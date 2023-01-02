@@ -41,12 +41,7 @@ export default function About() {
             <h2 className="h2">
               Email : <span id="blue">shivanshrawat587@gmail.com</span>
             </h2>
-            <a
-              class="resume"
-              href="https://docs.google.com/document/d/14H3ex3qth1BqlGrwiLEZF2jUHWbllhT3/edit?usp=sharing&ouid=118136014747440645481&rtpof=true&sd=true"
-            >
-              Download MY Resume
-            </a>
+           
           </div>
         </div>
       </div>
