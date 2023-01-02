@@ -1,15 +1,15 @@
-import React, { useState , useContext} from "react";
+import React, { useState, useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Switch, styled, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Input } from "antd";
 import { Drawer } from "antd";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { ThemeContext } from "../Context/ContextTheme";
 import { SearchContext } from "../Context/SearchContext";
 
-import '../Components/css/Header.css'
-
+import "../Components/css/Header.css";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -59,6 +59,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const AboutNav = () => {
+  const navigate = useNavigate();
+
   const { search, handleSearch } = useContext(SearchContext);
   const [showMediaIcons, setShowMediaIcons] = useState(false);
 
@@ -75,14 +77,14 @@ const AboutNav = () => {
   };
 
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  
-  const userImg =   localStorage.getItem('img')
+
+  const userImg = localStorage.getItem("img");
 
   const handleTheme = () => {
     count === 0 ? setCount(1) : setCount(0);
     count === 0 ? setPageTheme(theme.dark) : setPageTheme(theme.light);
   };
-  
+
   const { theme, setTheme } = useContext(ThemeContext);
   const [pageTheme, setPageTheme] = useState(theme.light);
   const [count, setCount] = useState(0);
@@ -98,31 +100,33 @@ const AboutNav = () => {
           />
 
           <Drawer
-            style={{ ...pageTheme,display:'flex', flexDirection:'column' }}
+            style={{ ...pageTheme, display: "flex", flexDirection: "column" }}
             placement="left"
-          
             onClose={onClose}
             open={open}
           >
-            {
-              loggedInUser.Name==='Guest User'? 
-              
-            <img id="userImg" src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'  alt="" />
-              :
-            <img id="userImg" src={userImg}  alt="" />
-          }
-            <Typography variant="h4" sx={{marginTop:'1rem'}}>
+            {loggedInUser.Name === "Guest User" ? (
+              <img
+                id="userImg"
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                alt=""
+              />
+            ) : (
+              <img id="userImg" src={userImg} alt="" />
+            )}
+            <Typography variant="h4" sx={{ marginTop: "1rem" }}>
               Welcome !! <span id="text-red">{loggedInUser.Name}</span>
             </Typography>
-            
-        
-              <a href="/">
-                <button style={{ position: "absolute", bottom: "5%", width: "80%" }} className="logutButton"  
-                >Logout</button>
-              </a>
-          
+
+            <a href="/">
+              <button
+                style={{ position: "absolute", bottom: "5%", width: "80%" }}
+                className="logutButton"
+              >
+                Logout
+              </button>
+            </a>
           </Drawer>
-          
         </div>
 
         {/* 2nd menu part  */}
@@ -133,26 +137,11 @@ const AboutNav = () => {
           style={{ ...pageTheme }}
         >
           <ul>
-            <li>
-            <a style={{ ...pageTheme }} href="/MainNews">
-                Home
-              </a>
-            </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/about">
-                About
-              </a>
-            </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/cricket">
-                Cricket
-              </a>
-            </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/politics">
-                Politics
-              </a>
-            </li>
+            <li onClick={() => navigate("/MainNews")}>Home</li>
+            <li onClick={() => navigate("/about")}>About</li>
+            <li onClick={() => navigate("/cricket")}>Cricket</li>
+            <li onClick={() => navigate("/politics")}>Politics</li>
+            <li onClick={() => navigate("/headlines")}>Headlines</li>
           </ul>
         </div>
 
@@ -165,16 +154,16 @@ const AboutNav = () => {
                 marginLeft: "20%",
               },
             }}
-            onClick={()=>{
-              
+            onClick={() => {
               if (
-                              document.querySelector("body").style.backgroundColor !== "black"
-                            ) {
-                              document.querySelector("body").style.backgroundColor = "black";
-                            } else {
-                              document.querySelector("body").style.backgroundColor = "white";
-                            }
-              handleTheme()}}
+                document.querySelector("body").style.backgroundColor !== "black"
+              ) {
+                document.querySelector("body").style.backgroundColor = "black";
+              } else {
+                document.querySelector("body").style.backgroundColor = "white";
+              }
+              handleTheme();
+            }}
           />
           {/* hamburget menu start  */}
 

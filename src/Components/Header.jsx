@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Switch, styled, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { SearchContext } from "../Context/SearchContext";
+import { useNavigate } from "react-router-dom";
 
 import { Input } from "antd";
 import { Drawer } from "antd";
@@ -60,6 +61,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const Navbar = ({ handleTheme, pageTheme }) => {
+  const navigate=useNavigate()
   const { search, handleSearch } = useContext(SearchContext);
   const [showMediaIcons, setShowMediaIcons] = useState(false);
 
@@ -78,22 +80,7 @@ const Navbar = ({ handleTheme, pageTheme }) => {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   const userImg = localStorage.getItem("img");
-  const handleImg = (e) => {
-    const file = e.target.files[0];
-    getBase64(file).then((base64) => {
-      localStorage["img"] = base64;
-      console.log(base64, "image format changed ");
-    });
-  };
 
-  const getBase64 = (file) => {
-    return new Promise((res, rej) => {
-      const reader = new FileReader();
-      reader.onload = () => res(reader.result);
-      reader.onabort = (err) => rej(err);
-      reader.readAsDataURL(file);
-    });
-  };
 
   return (
     <>
@@ -151,31 +138,11 @@ const Navbar = ({ handleTheme, pageTheme }) => {
             onChange={handleSearch}
           />
           <ul>
-            <li>
-              <a style={{ ...pageTheme }} href="/MainNews">
-                Home
-              </a>
-            </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/about">
-                About
-              </a>
-            </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/cricket">
-                Cricket
-              </a>
-            </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/politics">
-                Politics
-              </a>
-            </li>
-            <li>
-              <a style={{ ...pageTheme }} href="/headlines">
-                Headlines
-              </a>
-            </li>
+            <li onClick={() => navigate("/MainNews")}>Home</li>
+            <li onClick={() => navigate("/about")}>About</li>
+            <li onClick={() => navigate("/cricket")}>Cricket</li>
+            <li onClick={() => navigate("/politics")}>Politics</li>
+            <li onClick={() => navigate("/headlines")}>Headlines</li>
           </ul>
         </div>
 
@@ -199,7 +166,7 @@ const Navbar = ({ handleTheme, pageTheme }) => {
               handleTheme();
             }}
           />
-          
+
           {/* hamburget menu start  */}
           <div className="hamburger-menu">
             <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
