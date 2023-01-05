@@ -64,7 +64,6 @@ const SignUp = () => {
   );
 
   const normFile = (e) => {
-    console.log('Upload event:', e);
     if (Array.isArray(e)) {
       return e;
     }
@@ -74,7 +73,6 @@ const SignUp = () => {
     const file = e.target.files[0];
     getBase64(file).then((base64)=>{
     localStorage['img']= base64;
-        console.log(base64, 'image format changed ')
     })
   }
 

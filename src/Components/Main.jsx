@@ -54,7 +54,6 @@ function Main() {
 
   useEffect(() => {
     let searched = data.filter((item) => {
-      console.log(search.search);
       if (item.title) {
         return item.title.includes(search.search);
       }

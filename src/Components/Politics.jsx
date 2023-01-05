@@ -38,8 +38,6 @@ function Politics() {
       .get(`https://newsapi-z4r7.onrender.com/news?q=politics`)
       .then((response) => {
         setData(response.data.articles);
-        console.log(response.data.articles)
-        console.log(data,'dasdasdasdasdsad')
         setLoading(false);
         setfilteredData([data, ...response.data.articles]);
       });
@@ -52,7 +50,6 @@ function Politics() {
 
   useEffect(() => {
     let searched = data.filter((item) => {
-      console.log(search.search);
       if (item.title) {
         return item.title.includes(search.search);
       }
